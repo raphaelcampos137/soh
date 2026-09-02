@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Sophia ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      background: #05000a;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: white;
+    }
+
+    /* Fundo */
+    .background {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, #310d2e 0%, #120315 40%, #05000a 100%);
+    }
+
+    /* Estrelas */
+    .stars {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(1px 1px at 70% 20%, white, transparent),
+        radial-gradient(2px 2px at 80% 70%, white, transparent),
+        radial-gradient(1px 1px at 30% 80%, white, transparent),
+        radial-gradient(2px 2px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 90% 40%, white, transparent),
+        radial-gradient(1px 1px at 10% 60%, white, transparent);
+      background-size: 250px 250px;
+      opacity: 0.6;
+      animation: stars 8s linear infinite;
+    }
+
+    @keyframes stars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-80px); }
+    }
+
+    /* Tela inicial */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #05000a;
+      transition: opacity 2s ease;
+    }
+
+    .intro p {
+      font-size: 18px;
+      letter-spacing: 4px;
+      color: #e8b7d8;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .start {
+      border: 1px solid rgba(255, 150, 210, .6);
+      background: rgba(255, 100, 180, .08);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: .4s;
+      box-shadow: 0 0 25px rgba(255, 80, 180, .15);
+    }
+
+    .start:hover {
+      background: rgba(255, 100, 180, .25);
+      box-shadow: 0 0 40px rgba(255, 80, 180, .4);
+      transform: scale(1.05);
+    }
+
+    /* Conteúdo */
+    .content {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 2s ease;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .small-text {
+      color: #e8b7d8;
+      font-size: 18px;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: appear 2s forwards;
+      animation-delay: 1s;
+    }
+
+    .love {
+      font-family: Georgia, serif;
+      font-size: clamp(55px, 13vw, 140px);
+      letter-spacing: 8px;
+      color: #fff;
+      text-shadow:
+        0 0 10px #ff72c0,
+        0 0 30px #ff3da8,
+        0 0 70px #ff168f,
+        0 0 120px #ff168f;
+      opacity: 0;
+      transform: scale(.6);
+      animation: loveAppear 3s ease forwards;
+      animation-delay: 2s;
+    }
+
+    .heart {
+      display: inline-block;
+      color: #ff4cad;
+      animation: heartbeat 1.4s infinite;
+    }
+
+    .message {
+      max-width: 600px;
+      margin-top: 35px;
+      font-size: 20px;
+      line-height: 1.8;
+      color: #f7ddeb;
+      opacity: 0;
+      animation: appear 2.5s forwards;
+      animation-delay: 5s;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-size: 17px;
+      color: #ff9dd2;
+      opacity: 0;
+      animation: appear 2s forwards;
+      animation-delay: 6.5s;
+    }
+
+    @keyframes loveAppear {
+      0% {
+        opacity: 0;
+        transform: scale(.6);
+        filter: blur(15px);
+      }
+
+      60% {
+        opacity: 1;
+        transform: scale(1.08);
+        filter: blur(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.25);
+      }
+    }
+
+    /* Corações flutuantes */
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      color: #ff5db8;
+      font-size: 20px;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      opacity: 0;
+      z-index: 2;
+      text-shadow: 0 0 15px #ff3da8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: .8;
+      }
+
+      85% {
+        opacity: .7;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsivo */
+    @media (max-width: 600px) {
+      .small-text {
+        font-size: 14px;
+        letter-spacing: 3px;
+      }
+
+      .love {
+        letter-spacing: 3px;
+      }
+
+      .message {
+        font-size: 17px;
+        line-height: 1.7;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background"></div>
+  <div class="stars"></div>
+
+  <!-- Tela inicial -->
+  <div class="intro" id="intro">
+    <p>Eu tenho uma coisa pra te dizer...</p>
+    <button class="start" id="startButton" type="button">Clique aqui ❤️</button>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="content" id="content">
+
+    <div class="small-text">SOPHIA...</div>
+
+    <div class="love">
+      EU TE <span class="heart">♥</span> AMO
+    </div>
+
+    <div class="message">
+      Sophia, eu só queria que você soubesse o quanto você é
+      especial para mim. ❤️<br><br>
+
+      Talvez eu não consiga explicar tudo em palavras,
+      mas existe uma coisa que eu tenho certeza:
+      <strong>eu amo você.</strong><br><br>
+
+      E espero que nunca se esqueça disso. ✨
+    </div>
+
+    <div class="signature">
+      Com todo meu carinho, para você. ❤️
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const startButton = document.getElementById("startButton");
+
+      if (startButton) {
+        startButton.addEventListener("click", start);
+        startButton.addEventListener("touchend", function (event) {
+          event.preventDefault();
+          start();
+        }, { passive: false });
+      }
+    });
+
+    let started = false;
+
+    function start() {
+      // Evita que o toque e o clique executem a animação duas vezes.
+      if (started) return;
+      started = true;
+
+      const intro = document.getElementById("intro");
+      const content = document.getElementById("content");
+
+      intro.style.opacity = "0";
+
+      setTimeout(() => {
+        intro.style.display = "none";
+        content.style.opacity = "1";
+      }, 2000);
+
+      // Começa os corações flutuantes.
+      setInterval(createHeart, 450);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+
+      heart.classList.add("floating-heart");
+      heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (12 + Math.random() * 25) + "px";
+
+      const duration = 5 + Math.random() * 6;
+      heart.style.animationDuration = duration + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+  </script>
+
+</body>
+</html>
